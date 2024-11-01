@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bringbackmaps</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <h1 id="title">bringbackmaps</h1>
+    <h2 id="name">builtbylukas</h2>
+    <div>Thanks for using this extension. If you find it helpful, you can support me by checking out my links below</div>
+    <div>
+        <ul>
+            <li><a href="https://twitter.com/builtbylukas" target="_blank">Twitter / X</a></li>
+            <li><a href="https://builtbylukas.dev" target="_blank">builtbylukas.dev</a></li>
+            <li><a href="https://github.com/lukas-karsch" target="_blank">GitHub</a></li>
+        </ul>
+    </div>
+    <div class="contact">Contact me at <code>hello[at]builtbylukas.dev</code> if you find any issues with this extension</div>
+</div>
+
+<script defer>
+    const contact = document.querySelector(".contact code")
+    contact.addEventListener("click", () => navigator.clipboard.writeText("hello@builtbylukas.dev"))
+</script>
+
+</body>
+</html>

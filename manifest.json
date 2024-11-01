@@ -3,11 +3,13 @@
   "name": "bringbackmaps",
   "version": "1.0",
   "description": "Add the 'Maps' tab back to Google search results",
+  "action": {
+    "default_popup": "src/popup.html"
+  },
   "content_scripts": [
     {
       "matches": ["*://www.google.com/*", "*://google.com/*"],
-      "js": ["src/content.js"],
-      "css": ["src/styles.css"]
+      "js": ["src/content.js"]
     }
   ],
   "permissions": [

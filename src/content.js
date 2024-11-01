@@ -76,8 +76,8 @@ function init() {
         const observer = new MutationObserver((mutations, obs) => {
             const tabsContainer = document.querySelector('div[role="navigation"] div[role="list"]');
             if (tabsContainer) {
-                obs.disconnect();
                 createMapsTab();
+                obs.disconnect();
                 makeImageClickable();
             }
         });
