@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "bringbackmaps",
+  "version": "1.0",
+  "description": "Add google maps back to the search",
+  "content_scripts": [
+    {
+      "matches": ["*://www.google.com/*", "*://google.com/*"],
+      "js": ["src/content.js"],
+      "css": ["src/styles.css"]
+    }
+  ],
+  "permissions": [
+    "activeTab"
+  ]
+}
