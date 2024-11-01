@@ -24,7 +24,6 @@ function createMapsTab() {
     if (!existingTab) return;
 
     const mapsTab = existingTab.cloneNode(true);
-    // mapsTab.className = 'maps-tab-restored';
 
     const linkToMaps = mapsTab.querySelector('a');
     if (linkToMaps) {
