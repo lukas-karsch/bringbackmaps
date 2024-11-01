@@ -5,7 +5,7 @@ function isLocationSearch() {
     const locationInfobox = document.querySelector("div[data-ly='/travel_layout/map_2modules']")
     console.log({locationInfobox})
 
-    return locationInfobox || locationKeywords.some(keyword => searchQuery.includes(keyword));
+    return locationInfobox !== null || locationKeywords.some(keyword => searchQuery.includes(keyword));
 }
 
 function createMapsTab() {
