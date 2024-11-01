@@ -1,9 +1,21 @@
+function getTravelLayout() {
+    return document.querySelector("div[data-ly='/travel_layout/map_2modules']");
+}
+
+function getInputField() {
+    return document.querySelector('input[name="q"]');
+}
+
+function getMapsUrl() {
+    const searchTerm = encodeURIComponent(getInputField().value);
+    return `https://www.google.com/maps/search/${searchTerm}`;
+}
+
 function isLocationSearch() {
-    const searchQuery = document.querySelector('input[name="q"]')?.value.toLowerCase() || '';
+    const searchQuery = getInputField()?.value.toLowerCase() || '';
     const locationKeywords = ['near', 'in', 'at', 'location', 'address', 'where', 'place', 'directions'];
 
-    const locationInfobox = document.querySelector("div[data-ly='/travel_layout/map_2modules']")
-    console.log({locationInfobox})
+    const locationInfobox = getTravelLayout()
 
     return locationInfobox !== null || locationKeywords.some(keyword => searchQuery.includes(keyword));
 }
@@ -14,8 +26,7 @@ function createMapsTab() {
     console.log({tabsContainer})
     if (!tabsContainer || document.querySelector('.maps-tab-restored')) return;
 
-    const searchTerm = encodeURIComponent(document.querySelector('input[name="q"]').value);
-    const mapsUrl = `https://www.google.com/maps/search/${searchTerm}`;
+    const mapsUrl = getMapsUrl()
     console.log({mapsUrl})
 
     // Find an existing tab to clone its structure
@@ -45,6 +56,19 @@ function createMapsTab() {
     }
 }
 
+function makeImageClickable() {
+    const travelLayout = getTravelLayout()
+    const mapsImage = travelLayout.querySelector("img:not(ol img)");
+    const parent = mapsImage.parentElement;
+
+    const a = document.createElement("a")
+    a.href = getMapsUrl()
+
+    const removed = parent.removeChild(mapsImage)
+    a.appendChild(removed)
+    parent.appendChild(a)
+}
+
 function init() {
     console.log("init")
     if (isLocationSearch()) {
@@ -52,8 +76,9 @@ function init() {
         const observer = new MutationObserver((mutations, obs) => {
             const tabsContainer = document.querySelector('div[role="navigation"] div[role="list"]');
             if (tabsContainer) {
-                createMapsTab();
                 obs.disconnect();
+                createMapsTab();
+                makeImageClickable();
             }
         });
 
