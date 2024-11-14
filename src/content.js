@@ -1,11 +1,3 @@
-function getTravelLayout() {
-    return document.querySelector("div[data-ly='/travel_layout/map_2modules']");
-}
-
-function getInputField() {
-    return document.querySelector('input[name="q"]');
-}
-
 function getMapsUrl() {
     const searchTerm = encodeURIComponent(getInputField().value);
     return `https://www.google.com/maps/search/${searchTerm}`;
@@ -15,19 +7,25 @@ function isLocationSearch() {
     const searchQuery = getInputField()?.value.toLowerCase() || '';
     const locationKeywords = ['near', 'in', 'at', 'location', 'address', 'where', 'place', 'directions'];
 
-    const locationInfobox = getTravelLayout()
+    const locationInfobox = getTravelLayout();
 
     return locationInfobox !== null || locationKeywords.some(keyword => searchQuery.includes(keyword));
 }
 
+function getTravelLayout() {
+    return document.querySelector("div[data-ly='/travel_layout/map_2modules']");
+}
+
+function getInputField() {
+    return document.querySelector('input[name="q"]');
+}
+
 function createMapsTab() {
-    console.log("createMapsTab")
     const tabsContainer = document.querySelector('div[role="navigation"] div[role="list"]');
     console.log({tabsContainer})
     if (!tabsContainer || document.querySelector('.maps-tab-restored')) return;
 
     const mapsUrl = getMapsUrl()
-    console.log({mapsUrl})
 
     // Find an existing tab to clone its structure
     const existingTab = tabsContainer.querySelector('div[role="navigation"] div[role="listitem"]:has(> a:not([aria-disabled="true"]))');
@@ -46,7 +44,7 @@ function createMapsTab() {
     const linkContent = linkToMaps.querySelector("div")
     linkContent.textContent = "Maps"
 
-    // Insert after Images tab (guess)
+    // Insert after Images tab (estimation)
     const imagesListItem = Array.from(tabsContainer.querySelectorAll('div[role="listitem"]'))[1]
 
     if (imagesListItem) {
@@ -70,9 +68,7 @@ function makeImageClickable() {
 }
 
 function init() {
-    console.log("init")
     if (isLocationSearch()) {
-        console.log("seems to be location search")
         const observer = new MutationObserver((mutations, obs) => {
             const tabsContainer = document.querySelector('div[role="navigation"] div[role="list"]');
             if (tabsContainer) {
