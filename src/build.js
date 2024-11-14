@@ -13,9 +13,9 @@ const config = {
         'src/content.js',
         'src/popup.html',
         'src/styles.css',
-        'icon16.png',
-        'icon48.png',
-        'icon128.png'
+        'logo16.png',
+        'logo48.png',
+        'logo128.png'
     ],
 
     exclude: [

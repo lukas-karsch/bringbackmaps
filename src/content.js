@@ -56,6 +56,7 @@ function createMapsTab() {
 
 function makeImageClickable() {
     const travelLayout = getTravelLayout()
+    if(!travelLayout) return;
     const mapsImage = travelLayout.querySelector("img:not(ol img)");
     const parent = mapsImage.parentElement;
 
