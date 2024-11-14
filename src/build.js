@@ -12,6 +12,7 @@ const config = {
         'manifest.json',
         'src/content.js',
         'src/popup.html',
+        'src/styles.css',
         'icon16.png',
         'icon48.png',
         'icon128.png'
