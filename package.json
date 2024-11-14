@@ -1,0 +1,15 @@
+{
+  "name": "bringbackmaps",
+  "version": "1.0.0",
+  "description": "This is a simple chrome extension to bring back the \"Maps\" tab to google search results.",
+  "main": "index.js",
+  "scripts": {
+    "build": "node src/build.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "archiver": "^7.0.1"
+  }
+}
