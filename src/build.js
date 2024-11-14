@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const archiver = require('archiver');
 
-// Configuration
 const config = {
     source: './',
     output: './dist',
@@ -13,9 +12,9 @@ const config = {
         'src/content.js',
         'src/popup.html',
         'src/styles.css',
-        'logo16.png',
-        'logo48.png',
-        'logo128.png'
+        'logo_16.png',
+        'logo_48.png',
+        'logo_128.png'
     ],
 
     exclude: [
