@@ -11,8 +11,5 @@
       "matches": ["*://www.google.com/*", "*://google.com/*"],
       "js": ["src/content.js"]
     }
-  ],
-  "permissions": [
-    "activeTab"
   ]
 }

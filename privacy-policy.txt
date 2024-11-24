@@ -2,7 +2,7 @@ Privacy Policy for "Bring Back Maps" Chrome Extension
 
 The "Bring Back Maps" Chrome extension does not collect, transmit, or store any user data. The extension only operates locally on the user's device.
 
-The extension uses the "activeTab" permission to access the URL of the current tab when the user performs a location-related search on Google. This allows the extension to detect if the search is location-based and then inject the "Maps" tab back into the search results.
+The "Bring Back Maps" extension uses a permission to access all tabs that include a google-domain. This permission is only used to determine whether the search is location-related and to inject the necessary elements into the document.
 
 No data from the user's device is sent anywhere over the internet. All processing and functionality of the extension occurs entirely within the user's browser.
 
