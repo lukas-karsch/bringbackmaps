@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "bringbackmaps",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Add the 'Maps' tab back to Google search results",
   "action": {
     "default_popup": "src/popup.html"
