@@ -1,4 +1,8 @@
 function getMapsUrl() {
+    const directionsButton = getDirectionsButton()
+    if(directionsButton !== null) {
+        return directionsButton.href;
+    }
     const searchTerm = encodeURIComponent(getInputField().value);
     return `https://www.google.com/maps/search/${searchTerm}`;
 }
@@ -8,8 +12,13 @@ function isLocationSearch() {
     const locationKeywords = ['near', 'in', 'at', 'location', 'address', 'where', 'place', 'directions'];
 
     const locationInfobox = getTravelLayout();
+    const directionsButton = getDirectionsButton();
 
-    return locationInfobox !== null || locationKeywords.some(keyword => searchQuery.includes(keyword));
+    return locationInfobox !== null || directionsButton != null || locationKeywords.some(keyword => searchQuery.includes(keyword));
+}
+
+function getDirectionsButton() {
+    return document.querySelector('a[href*="/maps"]');
 }
 
 function getTravelLayout() {
@@ -21,15 +30,15 @@ function getInputField() {
 }
 
 function createMapsTab() {
+    console.log("bringbackmaps: creating maps tab");
     const tabsContainer = document.querySelector('div[role="navigation"] div[role="list"]');
-    console.log({tabsContainer})
     if (!tabsContainer || document.querySelector('.maps-tab-restored')) return;
 
-    const mapsUrl = getMapsUrl()
+    const mapsUrl = getMapsUrl();
 
     // Find an existing tab to clone its structure
     const existingTab = tabsContainer.querySelector('div[role="navigation"] div[role="listitem"]:has(> a:not([aria-disabled="true"]))');
-    console.log({existingTab})
+
     if (!existingTab) return;
 
     const mapsTab = existingTab.cloneNode(true);
